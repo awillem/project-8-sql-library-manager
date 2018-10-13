@@ -1,29 +1,33 @@
 const express = require('express');
 const app = express();
-const Book = require("./models").Book
+// const path = require('path');
+// const Book = require("./models").Book;
+const routes = require('./routes/index');
 
 app.use('/static', express.static('public'));
 
 app.set('view engine', 'pug');
 
-app.get('/', (req,res) => {
-    res.redirect('books');
-});
+app.use('/', routes);
 
-app.get('/books', (req,res,next) => {
-    Book.findAll(). then(() => {
-        res.render('index', {title: "Books", Book});
-    });
-});
 
-app.get('/books/new', (req,res) => {
-    res.render('new-book', {title: "New Book"});
-});
 
-app.get('/books/:id', (req,res) => {
-    // let id = req.params.id;
-    res.render('update-book', {title: "Update Book"});
-});
+// app.get('/', (req,res) => {
+//     res.redirect('books');
+// });
+
+// app.get('/books', (req,res,next) => {   
+//         res.render('index', {title: "Books"});
+// });
+
+// app.get('/books/new', (req,res) => {
+//     res.render('new-book', {title: "New Book"});
+// });
+
+// app.get('/books/:id', (req,res) => {
+//     // let id = req.params.id;
+//     res.render('update-book', {title: "Update Book"});
+// });
 
 // app.post('/books/new', (req,res) => {
 //     res.render('index', {title: "Home"});
@@ -36,7 +40,17 @@ app.get('/books/:id', (req,res) => {
 app.use((req, res, next) => {
     const err = new Error('Not Found');
     err.status = 404;
-    res.render('page-not-found');
+    next(err);    
+});
+
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    res.status(err.status);
+    if(err.status === 404) {        
+       return res.render('page-not-found')
+    } else {
+        res.render('error');
+    }
 });
 
 
