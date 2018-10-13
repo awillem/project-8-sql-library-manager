@@ -1,0 +1,27 @@
+{
+  "name": "project-8-sql-library-manager",
+  "version": "1.0.0",
+  "description": "Project 8 Full Stack JavaScript Techdegree - Treehouse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awillem/project-8-sql-library-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/awillem/project-8-sql-library-manager/issues"
+  },
+  "homepage": "https://github.com/awillem/project-8-sql-library-manager#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pug": "^2.0.3",
+    "sequelize": "^4.39.0",
+    "sequelize-cli": "^4.1.1",
+    "sqlite3": "^4.0.2"
+  }
+}
