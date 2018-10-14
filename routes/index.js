@@ -8,8 +8,7 @@ router.get('/', (req,res) => {
 
 router.get('/books', (req,res,next) => {   
     Book.findAll({attributes: ['title','author','genre','year']}).then(function(books){  
-            console.log(books);    
-            console.log('annoying');      
+            console.log(books);     
             res.render('index', {title: "Books", books: books});
         });
 });
