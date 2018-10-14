@@ -9,11 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,        
       },
-      author: {
-        type: Sequelize.STRING
-      },
+      author:  {
+        type: Sequelize.STRING,
+        },
       genre: {
         type: Sequelize.STRING
       },
@@ -31,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Books');
+    // return queryInterface.dropTable('Books');
   }
 };

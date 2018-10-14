@@ -7,7 +7,11 @@ router.get('/', (req,res) => {
 });
 
 router.get('/books', (req,res,next) => {   
-        res.render('index', {title: "Books"});
+    Book.findAll({attributes: ['title','author','genre','year']}).then(function(books){  
+            console.log(books);    
+            console.log('annoying');      
+            res.render('index', {title: "Books", books: books});
+        });
 });
 
 router.get('/books/new', (req,res) => {
