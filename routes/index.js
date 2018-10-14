@@ -7,26 +7,42 @@ router.get('/', (req,res) => {
 });
 
 router.get('/books', (req,res,next) => {   
-    Book.findAll({attributes: ['title','author','genre','year']}).then(function(books){  
-            console.log(books);     
+    Book.findAll().then(function(books){  
             res.render('index', {title: "Books", books: books});
         });
 });
 
-router.get('/books/new', (req,res) => {
-    res.render('new-book', {title: "New Book"});
+//Create new book form
+router.get('/books/new', (req,res, next) => {
+    res.render('new-book', {book: Book.build(), title: "New Book"});
 });
+
 
 router.get('/books/:id', (req,res) => {
-    // let id = req.params.id;
-    res.render('update-book', {title: "Update Book"});
+    Book.findById(req.params.id).then(function(book){
+        if(book) {
+             res.render('update-book', {title: "Update Book", book: book});
+        } else {
+            res.send(404);
+        }
+    });
+    
 });
 
-router.post('/books/new', (req,res) => {
-    res.render('index', {title: "Home"});
+//POST new book
+router.post('/books/new', function(req,res, next) {
+    console.log('stuff');
+    console.log(req.body);
+    Book.create(req.body).then(function(){     
+        res.redirect("/" );
+    });
 });
 
 router.post('/books/:id', (req,res) => {
+    res.render('index', {title: "Home"});
+});
+
+router.post('/books/:id/delete', (req,res) => {
     res.render('index', {title: "Home"});
 });
 
