@@ -14,7 +14,7 @@ a {
     color: black;
   }
 
-a.button, input[type=submit] {
+a.button, input[type=submit], .book-search button {
   color: white;
   background: #019875;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -29,11 +29,11 @@ form a.button, input[type=submit] {
   transition: 0.4s;
 }
 
-input[type=submit] {
+input[type=submit], .book-search button {
   border: 0;
 }
 
-  a.button:hover, input[type=submit]:hover {
+  a.button:hover, input[type=submit]:hover, .book-search button:hover {
     background-color: #01b189;
   }
 
@@ -87,11 +87,43 @@ input {
   transition: 0.4s;
 }
 
-input[type=text] {
+input[type=text], .book-search input {
   margin-left: 7px;
+  margin-right: 7px;
   width: 300px;
 }
 
 .error {
   color: rgb(236, 15, 15);
+}
+
+#pageHeader {
+  margin-bottom: 10px;
+  padding: 10px;
+  height: 40px;
+}
+#pageHeader div{
+  float: left;
+}
+
+.book-search {
+  float: right;
+}
+
+.pagination ul li {
+  display: inline;
+  background-color: #019875;
+  margin: 5px;
+  transition: 0.4s;
+}
+
+.pagination ul li:hover {
+  background-color: #01b189;
+}
+
+.pagination ul li a {
+  color: white;  
+  padding: 10px;
+  width: 100%;
+  height: 100%;
 }

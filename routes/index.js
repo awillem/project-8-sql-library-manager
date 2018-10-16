@@ -23,6 +23,8 @@ router.get('/books/:id', (req,res) => {
         if(book) {
              res.render('update-book', {title: "Update Book", book: book});
         } else {
+            const err = new Error('Not Found');
+            console.log(err);
             res.render("./error");
         }
     });
